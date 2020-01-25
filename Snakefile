@@ -216,7 +216,7 @@ rule refine:
         clock_std_dev = 0.0003,
         coalescent = "skyline",
         date_inference = "marginal",
-        divergence_unit = "mutaitons"
+        divergence_unit = "mutations"
     shell:
         """
         augur refine \
