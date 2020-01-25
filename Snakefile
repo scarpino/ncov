@@ -215,7 +215,8 @@ rule refine:
         clock_rate = 0.000459, # estimate taken from MERS via Dudas et al. 2018. eLife.
         clock_std_dev = 0.0003,
         coalescent = "skyline",
-        date_inference = "marginal"
+        date_inference = "marginal",
+        divergence_unit = "mutaitons"
     shell:
         """
         augur refine \
@@ -224,13 +225,14 @@ rule refine:
             --metadata {input.metadata} \
             --output-tree {output.tree} \
             --output-node-data {output.node_data} \
-            --keep-root \
+            --root "Wuhan/WIV06/2019" \
             --timetree \
             --clock-rate {params.clock_rate} \
             --clock-std-dev {params.clock_std_dev} \
             --coalescent {params.coalescent} \
             --date-inference {params.date_inference} \
             --date-confidence \
+            --divergence-unit {params.divergence_unit} \
             --no-covariance
         """
 
